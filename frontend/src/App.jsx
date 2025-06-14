@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react'
-// import { getItems, getItem, createItem, updateItem, deleteItem} from "./api"
+// import { getItems, getItem, createItem, updateItem, deleteItem} from "./assets/data"
 import './App.css'
 
 function App() {
@@ -8,36 +8,11 @@ function App() {
 
   return (
     <>
-      <button onClick={makePost}>
-        Create Post
-      </button>
+      <h1>
+        Code here!
+      </h1>
     </>
   )
 }
 
 export default App
-
-// const [items, setItems] = useState()
-
-//   function makePost() {
-//     let postObject = {
-//       title: "ZZZZ",
-//       description: "XXX",
-//       content: "YYYY",
-//       author: "AAAA",
-//       dateCreated: new Date()
-//     }
-
-//     createItem(postObject)
-//   }
-
-  // useEffect(() => {
-  //   async function loadAllItems() {
-  //     let data = await getItems()
-  //     if (data) {
-  //       setItems(data)
-  //     }
-  //   }
-
-  //   loadAllItems()
-  // }, [])
