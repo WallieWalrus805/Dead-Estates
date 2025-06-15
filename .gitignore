@@ -38,3 +38,4 @@ coverage/
 # Ignore lock files
 package-lock.json
 yarn.lock
+backend/config.env
