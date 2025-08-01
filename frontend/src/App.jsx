@@ -2,15 +2,15 @@
 // import { getItems, getItem, createItem, updateItem, deleteItem} from "./assets/data"
 import './App.css'
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
-import { Ah } from '../pages/ah'
-import { Ct } from '../pages/Ct'
-import { Home } from '../pages/Home'
-import { Landing } from '../pages/Landing'
-import { Leaderboard } from '../pages/Leaderboard'
-import { Map } from '../pages/Map'
-import { Settings } from '../pages/Settings'
-import { Navbar } from '../components/navbar'
-import { Layout } from '../components/Layout'
+import { Ah } from './pages/ah'
+import { Ct } from './pages/Ct'
+import { Home } from './pages/Home'
+import { Landing } from './pages/Landing'
+import { Leaderboard } from './pages/Leaderboard'
+import { Map } from './pages/Map'
+import { Settings } from './pages/Settings'
+// import { Navbar } from './components/navbar'
+import { Layout } from './components/Layout'
 
 function App() {
 

@@ -5,8 +5,8 @@ const ObjectId = require("mongodb").ObjectId
 let postRoutes = express.Router()
 
 // #1 - Retrieve All
-// http://localhost:3000/ah
-postRoutes.route("/ah").get(async (request, response) => {
+// http://localhost:3000/posts
+postRoutes.route("/posts").get(async (request, response) => {
     let db = database.getDb()
     let data = await db.collection("listings").find({}).toArray()
     if (data.length > 0) {
@@ -17,8 +17,8 @@ postRoutes.route("/ah").get(async (request, response) => {
 })
 
 // #2 - Retrieve One
-// http://localhost:3000/ah/12345
-postRoutes.route("/ah/:id").get(async (request, response) => {
+// http://localhost:3000/posts/12345
+postRoutes.route("/posts/:id").get(async (request, response) => {
     let db = database.getDb()
     let data = await db.collection("listings").findOne({ _id: new ObjectId(request.params.id) })
     if (Object.keys(data).length > 0) {
@@ -29,7 +29,7 @@ postRoutes.route("/ah/:id").get(async (request, response) => {
 })
 
 // #3 - Create one
-postRoutes.route("/ah").post(async (request, response) => {
+postRoutes.route("/posts").post(async (request, response) => {
     let db = database.getDb()
     let mongoObject = {
         title: request.body.title,
@@ -43,7 +43,7 @@ postRoutes.route("/ah").post(async (request, response) => {
 })
 
 // #4 - Update one
-postRoutes.route("/ah/:id").put(async (request, response) => {
+postRoutes.route("/posts/:id").put(async (request, response) => {
     let db = database.getDb()
     let mongoObject = {
         $set: {

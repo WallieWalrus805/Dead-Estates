@@ -2,9 +2,9 @@ import axios from "axios";
 
 const URL = "http://localhost:3000"
 
-export async function getItems() {
+export async function getPosts() {
     //"http://localhost:3000/posts"
-    const response = await axios.get(`${URL}/ah`)
+    const response = await axios.get(`${URL}/posts`)
 
     if (response.status === 200) {
         return response.data
@@ -13,9 +13,9 @@ export async function getItems() {
     }
 }
 
-export async function getItem(id) {
-    //"http://localhost:3000/ah/12345"
-    const response = await axios.get(`${URL}/ah/${id}`)
+export async function getPost(id) {
+    //"http://localhost:3000/posts/12345"
+    const response = await axios.get(`${URL}/posts/${id}`)
 
     if (response.status === 200) {
         return response.data
@@ -24,20 +24,20 @@ export async function getItem(id) {
     }
 }
 
-export async function createItem(post) {
-    //"http://localhost:3000/ah/"
-    const response = await axios.post(`${URL}/ah/`, post)
+export async function createPost(post) {
+    //"http://localhost:3000/posts/"
+    const response = await axios.post(`${URL}/posts/`, post)
     return response
 }
 
-export async function updateItem(id, post) {
-    //"http://localhost:3000/ah/12345"
-    const response = await axios.put(`${URL}/ah/${id}`, post)
+export async function updatePost(id, post) {
+    //"http://localhost:3000/posts/12345"
+    const response = await axios.put(`${URL}/posts/${id}`, post)
     return response
 }
 
-export async function deleteItem(id) {
-    //"http://localhost:3000/ah/12345"
-    const response = await axios.delete(`${URL}/ah/${id}`)
+export async function deletePost(id) {
+    //"http://localhost:3000/posts/12345"
+    const response = await axios.delete(`${URL}/posts/${id}`)
     return response
 }
