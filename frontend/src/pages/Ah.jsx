@@ -15,12 +15,12 @@ export function Ah() {
     }, [])
 
     return (
-        <>
+        <div className="main-ah">
             {listings.map((item) => {
                 return (
                     <Listing item={item} key={item._id} />
                 )
             })}
-        </>
+        </div>
     )
 }

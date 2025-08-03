@@ -4,6 +4,18 @@ const ObjectId = require("mongodb").ObjectId
 
 let postRoutes = express.Router()
 
+// #1 - Retrieve All (Comms)
+// http://localhost:3000/comms
+postRoutes.route("/comms").get(async (request, response) => {
+    let db = database.getDb2()
+    let data = await db.collection("comms").find({}).toArray()
+    if (data.length > 0) {
+        response.json(data)
+    } else {
+        throw new Error("Data was not found :(")
+    }
+})
+
 // #1 - Retrieve All
 // http://localhost:3000/posts
 postRoutes.route("/posts").get(async (request, response) => {
@@ -39,6 +51,19 @@ postRoutes.route("/posts").post(async (request, response) => {
         dateCreated: request.body.dateCreated
     }
     let data = await db.collection("listings").insertOne(mongoObject)
+    response.json(data)
+})
+
+// #4 - Update one (comms)
+postRoutes.route("/comms/:id").put(async (request, response) => {
+    let db = database.getDb()
+    let mongoObject = {
+        $set: {
+            price: request.body.price,
+            priceHistory: request.body.priceHistory,
+        }
+    }
+    let data = await db.collection("comms").updateOne({_id: new ObjectId(request.params.id)}, mongoObject)
     response.json(data)
 })
 

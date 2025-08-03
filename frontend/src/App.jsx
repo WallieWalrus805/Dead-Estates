@@ -2,7 +2,7 @@
 // import { getItems, getItem, createItem, updateItem, deleteItem} from "./assets/data"
 import './App.css'
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
-import { Ah } from './pages/ah'
+import { Ah } from './pages/Ah'
 import { Ct } from './pages/Ct'
 import { Home } from './pages/Home'
 import { Landing } from './pages/Landing'

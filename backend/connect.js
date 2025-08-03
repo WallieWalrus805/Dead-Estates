@@ -12,13 +12,18 @@ const client = new MongoClient(process.env.ATLAS_URI, {
 });
 
 let database
+let database2
 
 module.exports = {
   connectToServer: () => {
     database = client.db("auctionHouse")
+    database2 = client.db("commoditiesTrade")
   },
   getDb: () => {
     return database
+  },
+  getDb2: () => {
+    return database2
   }
 }
 

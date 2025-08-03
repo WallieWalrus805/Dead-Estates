@@ -1,9 +1,13 @@
-
+import { Link } from "react-router-dom"
 
 export function Landing() {
     return (
-        <>
-            Landing page
-        </>
+        <div>
+            <Link to="/home">
+                <button>
+                    Homey
+                </button>
+            </Link>
+        </div>
     )
 }
