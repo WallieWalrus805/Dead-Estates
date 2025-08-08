@@ -1,24 +1,14 @@
 const express = require("express")
 const database = require("./connect")
 const ObjectId = require("mongodb").ObjectId
+const jwt = require("jsonwebtoken")
+require("dotenv").config({path: "./config.env"})
 
 let postRoutes = express.Router()
 
-// #1 - Retrieve All (Comms)
-// http://localhost:3000/comms
-postRoutes.route("/comms").get(async (request, response) => {
-    let db = database.getDb2()
-    let data = await db.collection("comms").find({}).toArray()
-    if (data.length > 0) {
-        response.json(data)
-    } else {
-        throw new Error("Data was not found :(")
-    }
-})
-
 // #1 - Retrieve All
 // http://localhost:3000/posts
-postRoutes.route("/posts").get(async (request, response) => {
+postRoutes.route("/posts").get(verifyToken, async (request, response) => {
     let db = database.getDb()
     let data = await db.collection("listings").find({}).toArray()
     if (data.length > 0) {
@@ -30,7 +20,7 @@ postRoutes.route("/posts").get(async (request, response) => {
 
 // #2 - Retrieve One
 // http://localhost:3000/posts/12345
-postRoutes.route("/posts/:id").get(async (request, response) => {
+postRoutes.route("/posts/:id").get(verifyToken, async (request, response) => {
     let db = database.getDb()
     let data = await db.collection("listings").findOne({ _id: new ObjectId(request.params.id) })
     if (Object.keys(data).length > 0) {
@@ -41,7 +31,7 @@ postRoutes.route("/posts/:id").get(async (request, response) => {
 })
 
 // #3 - Create one
-postRoutes.route("/posts").post(async (request, response) => {
+postRoutes.route("/posts").post(verifyToken, async (request, response) => {
     let db = database.getDb()
     let mongoObject = {
         title: request.body.title,
@@ -54,28 +44,15 @@ postRoutes.route("/posts").post(async (request, response) => {
     response.json(data)
 })
 
-// #4 - Update one (comms)
-postRoutes.route("/comms/:id").put(async (request, response) => {
-    let db = database.getDb()
-    let mongoObject = {
-        $set: {
-            price: request.body.price,
-            priceHistory: request.body.priceHistory,
-        }
-    }
-    let data = await db.collection("comms").updateOne({_id: new ObjectId(request.params.id)}, mongoObject)
-    response.json(data)
-})
-
 // #4 - Update one
-postRoutes.route("/posts/:id").put(async (request, response) => {
+postRoutes.route("/posts/:id").put(verifyToken, async (request, response) => {
     let db = database.getDb()
     let mongoObject = {
         $set: {
             title: request.body.title,
             description: request.body.description,
             content: request.body.content,
-            author: request.body.author,
+            author: request.user._id,
             dateCreated: request.body.dateCreated
         }
     }
@@ -84,10 +61,29 @@ postRoutes.route("/posts/:id").put(async (request, response) => {
 })
 
 // #5 - Delete One
-postRoutes.route("/ah/:id").delete(async (request, response) => {
+postRoutes.route("/ah/:id").delete(verifyToken, async (request, response) => {
     let db = database.getDb()
     let data = await db.collection("listings").deleteOne({ _id: new ObjectId(request.params.id)})
     response.json(data)
 })
+
+function verifyToken(request, response, next) {
+    const authHeaders = request.headers["authorization"]
+    const token = authHeaders && authHeaders.split(' ')[1]
+    if (!token) {
+        return response.status(401).json({message: "Authentication token is missing"})
+    }
+
+    jwt.verify(token, process.env.SECRETKEY, (error, user) => {
+        if (error) {
+            return response.status(403).json({message: "Invalid Token"})
+        }
+        
+        request.user = user
+        next()
+
+    })
+
+}
 
 module.exports = postRoutes

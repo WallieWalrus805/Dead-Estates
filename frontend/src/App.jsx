@@ -1,5 +1,3 @@
-// import { useState, useEffect } from 'react'
-// import { getItems, getItem, createItem, updateItem, deleteItem} from "./assets/data"
 import './App.css'
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
 import { Ah } from './pages/Ah'
@@ -9,19 +7,19 @@ import { Landing } from './pages/Landing'
 import { Leaderboard } from './pages/Leaderboard'
 import { Map } from './pages/Map'
 import { Settings } from './pages/Settings'
-// import { Navbar } from './components/navbar'
+import { Navbar } from './components/navbar'
 import { Layout } from './components/Layout'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 function App() {
 
-  // Pages
-  // Landing page
-  // Home page (start menu)
-  // Map page
-  // Auction House page
-  // Commodities Trade page
-  // Leaderboards page
-  // Settings/Profile page
+  useEffect(() => {
+    let token = sessionStorage.getItem("User")
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+    }
+  }, [])
 
   return (
     <Router>
@@ -35,7 +33,6 @@ function App() {
           <Route path="/map" element={<Map />}/>
           <Route path="/settings" element={<Settings />}/>
         </Route>
-
       </Routes>
     </Router>
   )
