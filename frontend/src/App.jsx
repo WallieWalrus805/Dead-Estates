@@ -2,15 +2,15 @@ import './App.css'
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
 import { Ah } from './pages/Ah'
 import { Ct } from './pages/Ct'
-import { Home } from './pages/Home'
 import { Landing } from './pages/Landing'
 import { Leaderboard } from './pages/Leaderboard'
 import { Map } from './pages/Map'
 import { Settings } from './pages/Settings'
-import { Navbar } from './components/navbar'
+import { Navbar } from './components/Navbar'
 import { Layout } from './components/Layout'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { PausedProvider } from './assets/contexts/PausedContext'
 
 function App() {
 
@@ -22,19 +22,20 @@ function App() {
   }, [])
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Landing />}/>
-        <Route element={<Layout />}>
-          <Route path="/ah" element={<Ah />}/>
-          <Route path="/ct" element={<Ct />}/>
-          <Route path="/home" element={<Home />}/>
-          <Route path="/leaderboard" element={<Leaderboard />}/>
-          <Route path="/map" element={<Map />}/>
-          <Route path="/settings" element={<Settings />}/>
-        </Route>
-      </Routes>
-    </Router>
+    <PausedProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route element={<Layout />}>
+            <Route path="/ah" element={<Ah className="Frame" />} />
+            <Route path="/ct" element={<Ct className="Frame" />} />
+            <Route path="/leaderboard" element={<Leaderboard className="Frame" />} />
+            <Route path="/map" element={<Map className="Frame" />} />
+            <Route path="/settings" element={<Settings className="Frame" />} />
+          </Route>
+        </Routes>
+      </Router>
+    </PausedProvider>
   )
 }
 

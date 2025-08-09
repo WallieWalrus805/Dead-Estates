@@ -2,31 +2,21 @@
 export const pageData = [
     {
         id: 0,
-        name: "Home",
-        path: "/home"
-    },
-    {
-        id: 1,
-        name: "Map",
-        path: "/map"
-    },
-    {
-        id: 2,
         name: "Auction House",
         path: "/ah"
     },
     {
-        id: 3,
+        id: 1,
         name: "Commodities Trade",
         path: "/ct"
     },
     {
-        id: 4,
+        id: 2,
         name: "Leaderboard",
         path: "/leaderboard"
     },
     {
-        id: 5,
+        id: 3,
         name: "Settings",
         path: "/settings"
     }

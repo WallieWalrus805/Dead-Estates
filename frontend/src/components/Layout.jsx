@@ -1,4 +1,4 @@
-import { Navbar } from "./navbar"
+import { Navbar } from "./Navbar"
 import { Outlet, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 

@@ -1,51 +1,57 @@
+import { Link, useNavigate } from "react-router-dom"
 import { pageData } from "./pageData"
 import { PausedContext } from "../assets/contexts/PausedContext"
-import { Link, useNavigate } from "react-router-dom"
-import { useState, useEffect, useContext } from "react"
+import { UserContext } from "../assets/contexts/UserContext"
+import { useContext, useEffect } from "react"
 
 export function Navbar() {
 
     const navigate = useNavigate()
+
+    const { paused, setPaused } = useContext(PausedContext)
+    // const { user, setUser } = useContext(UserContext)
 
     function handleLogout() {
         sessionStorage.removeItem("User")
         navigate("/")
     }
 
-    const [paused, setPaused] = useState(useContext(PausedContext));
-
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === "Escape") {
-                setPaused(prevPaused => !prevPaused);
+                setPaused(prev => {
+                    const newPaused = !prev
+                    return newPaused
+                })
+                if (paused === false) {
+                    navigate("/map")
+                }
             }
-        };
+        }
 
-        window.addEventListener('keydown', handleKeyDown);
-
+        window.addEventListener("keydown", handleKeyDown)
         return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, []);
+            window.removeEventListener("keydown", handleKeyDown)
+        }
+    }, [setPaused])
 
     return (
-        <PausedContext.Provider value={false}>
+        <>
             {paused ? (
                 <div className="navbar">
                     {pageData.map((page) => {
                         return (
                             <Link to={page.path} className="navItem" key={page.id}>
-                                <button>
-                                    {page.name}
-                                </button>
+                                {page.name}
                             </Link>
                         )
                     })}
-                    <button onClick={handleLogout}>Log Out</button>
+                    <button className="navItem" onClick={handleLogout}>Log Out</button>
                     <div>
                         <a>User</a>
                     </div>
                 </div>
             ) : <></>}
-        </PausedContext.Provider>)
+        </>
+    )
 }

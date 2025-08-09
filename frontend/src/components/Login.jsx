@@ -22,7 +22,7 @@ export function Login() {
         if (response) {
             sessionStorage.setItem("User", response)
             axios.defaults.headers.common["authorization"] = `Bearer ${response}`
-            navigate("/home")
+            navigate("/map")
         } else {
             alert("Login failed")
         }
