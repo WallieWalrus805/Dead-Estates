@@ -1,15 +1,14 @@
 import { Link, useNavigate } from "react-router-dom"
 import { pageData } from "./pageData"
 import { PausedContext } from "../assets/contexts/PausedContext"
-import { UserContext } from "../assets/contexts/UserContext"
 import { useContext, useEffect } from "react"
+import { getUser } from "../assets/data/api"
 
 export function Navbar() {
 
     const navigate = useNavigate()
 
     const { paused, setPaused } = useContext(PausedContext)
-    // const { user, setUser } = useContext(UserContext)
 
     function handleLogout() {
         sessionStorage.removeItem("User")
@@ -19,13 +18,11 @@ export function Navbar() {
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === "Escape") {
+                navigate("/map")
                 setPaused(prev => {
                     const newPaused = !prev
                     return newPaused
                 })
-                if (paused === false) {
-                    navigate("/map")
-                }
             }
         }
 
@@ -48,7 +45,7 @@ export function Navbar() {
                     })}
                     <button className="navItem" onClick={handleLogout}>Log Out</button>
                     <div>
-                        <a>User</a>
+                        <a>{sessionStorage.getItem("Username")}</a>
                     </div>
                 </div>
             ) : <></>}

@@ -1,5 +1,6 @@
 import { createUser } from "../assets/data/api"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export function CreateUser() {
 
@@ -8,6 +9,8 @@ export function CreateUser() {
         email: "",
         password: ""
     })
+
+    const navigate = useNavigate()
 
     function handleChange(e) {
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -19,6 +22,9 @@ export function CreateUser() {
         console.log(response)
         if (response.status !== 200) {
             alert("User account could not be created :(")
+        } else {
+            alert("User account created successfully!")
+            navigate("/map") // Redirect to the map page after successful creation
         }
     }
 

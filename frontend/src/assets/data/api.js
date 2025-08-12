@@ -2,17 +2,6 @@ import axios from "axios";
 
 const URL = "http://localhost:3000"
 
-export async function getComms() {
-    //"http://localhost:3000/comms"
-    const response = await axios.get(`${URL}/comms`)
-
-    if (response.status === 200) {
-        return response.data
-    } else {
-        return
-    }
-}
-
 export async function getPosts() {
     //"http://localhost:3000/posts"
     const response = await axios.get(`${URL}/posts`)

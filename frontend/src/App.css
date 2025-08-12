@@ -1,15 +1,58 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
-  border: 5px solid white;
-  min-height: 600px;
-  min-width: 600px;
+  border: 2px solid white;
+  height: 600px;
+  width: 600px;
   place-self: center;
 }
 
 .GameFrame {
   color: white;
+}
+
+.parcel {
+  height: 600px;
+  width: 600px;
+  display: grid;
+}
+
+tbody {
+  height: 600px;
+  width: 600px;
+  gap: 0;
+}
+
+tr {
+  height: 30px;
+  width: 600px;
+  display: flex;
+}
+
+.void, .grass, .water, .boulder, .dirt {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.void {
+  background-color: black;
+}
+
+.grass {
+  background-color: green;
+}
+
+.boulder {
+  background-color: gray;
+}
+
+.water {
+  background-color: blue;
+}
+
+.dirt {
+  background-color: brown;
 }
 
 .Pause {

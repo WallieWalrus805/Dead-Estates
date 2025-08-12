@@ -82,7 +82,7 @@ userRoutes.route("/ah/:id").delete(async (request, response) => {
 userRoutes.route("/users/login").post(async (request, response) => {
     let db = database.getDb()
 
-    const user = await db.collection("users").findOne({ email: request.body.email })
+    const user = await db.collection("users").findOne({ name: request.body.name })
 
     if (user) {
         let confirmation = await bcrypt.compare(request.body.password, user.password)
