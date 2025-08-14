@@ -6,11 +6,11 @@ import { Landing } from './pages/Landing'
 import { Leaderboard } from './pages/Leaderboard'
 import { Map } from './pages/Map'
 import { Settings } from './pages/Settings'
-import { Navbar } from './components/Navbar'
 import { Layout } from './components/Layout'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { PausedProvider } from './assets/contexts/PausedContext'
+import { UserProvider } from './assets/contexts/UserContext'
 
 function App() {
 
@@ -23,19 +23,21 @@ function App() {
 
   return (
     <PausedProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route element={<Layout />}>
-            <Route path="/ah" element={<Ah className="Frame" />} />
-            <Route path="/ct" element={<Ct className="Frame" />} />
-            <Route path="/leaderboard" element={<Leaderboard className="Frame" />} />
-            <Route path="/map" element={<Map className="Frame" />} />
-            <Route path="/settings" element={<Settings className="Frame" />} />
-          </Route>
-        </Routes>
-      </Router>
-    </PausedProvider>
+      <UserProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route element={<Layout />}>
+              <Route path="/ah" element={<Ah className="Frame" />} />
+              <Route path="/ct" element={<Ct className="Frame" />} />
+              <Route path="/leaderboard" element={<Leaderboard className="Frame" />} />
+              <Route path="/map" element={<Map className="Frame" />} />
+              <Route path="/settings" element={<Settings className="Frame" />} />
+            </Route>
+          </Routes>
+        </Router>
+      </UserProvider>
+    </PausedProvider >
   )
 }
 

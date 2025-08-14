@@ -55,6 +55,13 @@ tr {
   background-color: brown;
 }
 
+.selected {
+  width: 28px;
+  height: 28px;
+  border: 1px solid red;
+  transition: all 0.2s ease-in-out;
+}
+
 .Pause {
   padding: 25%;
   place-self: center;

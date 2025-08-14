@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { pageData } from "./pageData"
 import { PausedContext } from "../assets/contexts/PausedContext"
 import { useContext, useEffect } from "react"
-import { getUser } from "../assets/data/api"
+import { UserContext } from "../assets/contexts/UserContext"
 
 export function Navbar() {
 
@@ -10,8 +10,10 @@ export function Navbar() {
 
     const { paused, setPaused } = useContext(PausedContext)
 
+    const { user, setUser } = useContext(UserContext)
+
     function handleLogout() {
-        sessionStorage.removeItem("User")
+        // sessionStorage.removeItem("User")
         navigate("/")
     }
 
@@ -45,7 +47,7 @@ export function Navbar() {
                     })}
                     <button className="navItem" onClick={handleLogout}>Log Out</button>
                     <div>
-                        <a>{sessionStorage.getItem("Username")}</a>
+                        <a>{user.name}</a>
                     </div>
                 </div>
             ) : <></>}
