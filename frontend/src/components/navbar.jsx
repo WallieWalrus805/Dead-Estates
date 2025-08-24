@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import { pageData } from "./pageData"
+import { pageData } from "../assets/data/pageData"
 import { PausedContext } from "../assets/contexts/PausedContext"
 import { useContext, useEffect } from "react"
 import { UserContext } from "../assets/contexts/UserContext"
@@ -13,7 +13,7 @@ export function Navbar() {
     const { user, setUser } = useContext(UserContext)
 
     function handleLogout() {
-        // sessionStorage.removeItem("User")
+        sessionStorage.removeItem("User")
         navigate("/")
     }
 
@@ -34,6 +34,19 @@ export function Navbar() {
         }
     }, [setPaused])
 
+    useEffect(() => {
+        const handleLoad = () => {
+            if (!document.URL.includes("map")) {
+                setPaused(true)
+            }
+        }
+
+        window.addEventListener("load", handleLoad)
+        return () => {
+            window.removeEventListener("load", handleLoad)
+        }
+    }, [])
+
     return (
         <>
             {paused ? (
@@ -46,9 +59,7 @@ export function Navbar() {
                         )
                     })}
                     <button className="navItem" onClick={handleLogout}>Log Out</button>
-                    <div>
-                        <a>{user.name}</a>
-                    </div>
+                    <a>{user.name}</a>
                 </div>
             ) : <></>}
         </>

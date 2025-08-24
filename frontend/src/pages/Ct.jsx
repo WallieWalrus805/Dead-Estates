@@ -1,28 +1,17 @@
-// import { Comm } from "../components/Comm"
-// import { getComms } from "../assets/data/api"
-// import { useState, useEffect } from "react"
+import { useState } from "react"
+import { CtNav } from "../components/CtNav"
+import { UserContext } from "../assets/contexts/UserContext"
+import { useContext } from "react"
 
 export function Ct() {
-    // const [comms, setComms] = useState([])
-
-    // useEffect(() => {
-    //     async function loadAllComms() {
-    //         const data = await getComms()
-    //         setComms(data)
-    //     }
-    //     loadAllComms()
-    // }, [])
 
     return (
         <>
-            Commodities Trade Page
+            <CtNav/>
+            <div className="ct-balance">
+                <img src="/Icon_CT.png" alt="CT Icon" className="ct-icon" />
+                <h1>{}</h1>
+            </div>
         </>
-        // <div className="main-ct">
-        //     {comms.map((item) => {
-        //         return (
-        //             <Comm item={item} key={item._id} />
-        //         )
-        //     })}
-        // </div>
     )
 }

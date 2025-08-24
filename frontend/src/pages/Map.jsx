@@ -1,7 +1,7 @@
 import { PausedContext } from "../assets/contexts/PausedContext"
 import { useContext, useEffect, useState, useRef } from "react"
 import { TileRow } from "../components/TileRow"
-import { tileData } from "../components/TileData"
+import { tileData } from "../assets/data/tileData"
 
 export function Map() {
     const { paused, setPaused } = useContext(PausedContext)

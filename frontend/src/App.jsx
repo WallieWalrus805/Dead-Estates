@@ -37,7 +37,7 @@ function App() {
           </Routes>
         </Router>
       </UserProvider>
-    </PausedProvider >
+    </PausedProvider>
   )
 }
 

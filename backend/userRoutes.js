@@ -48,7 +48,14 @@ userRoutes.route("/users").post(async (request, response) => {
             email: request.body.email,
             password: hash,
             joinDate: new Date(),
-            money: 0
+            money: 1000,
+            resources: {
+                clay: 0,
+                wood: 0,
+                stone: 0,
+                steel: 0,
+                gold: 0
+            }
         }
         let data = await db.collection("users").insertOne(mongoObject)
         response.json(data)
@@ -64,7 +71,8 @@ userRoutes.route("/users/:id").put(async (request, response) => {
             email: request.body.email,
             password: request.body.password,
             joinDate: request.body.joinDate,
-            money: request.body.money
+            money: request.body.money,
+            resources: request.body.resources
         }
     }
     let data = await db.collection("users").updateOne({ _id: new ObjectId(request.params.id) }, mongoObject)

@@ -1,4 +1,4 @@
-import { tileLegend } from "./TileData"
+import { tileLegend } from "../assets/data/tileData";
 
 export function Tile({ dataType }) {
 
