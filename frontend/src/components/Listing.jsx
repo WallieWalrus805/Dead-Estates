@@ -1,5 +1,13 @@
 export function Listing({item}) {
 
+    const intToValue = {
+        1: "Poor",
+        2: "Sub-Par",
+        3: "Fair",
+        4: "Good",
+        5: "Pristine"
+    }
+
     return (
         <div className="ah-listing" id={item.id}>
             <div className="ah-listing-image">
@@ -8,10 +16,8 @@ export function Listing({item}) {
                 {/* <img src={item.image} alt={item.name} /> */}
             </div>
             <div className="ah-listing-details">
-                <h1>{item.name}</h1>
-                {/* <h2>{item.description}</h2> */}
-                {/* <p>{item.dateCreated}</p> */}
-                {/* <p>{item.price}</p> */}
+                <h1>{intToValue[item.condition]} Level {item.level} {item.type}</h1>
+                <p>{item.price}ɃɃ</p>
             </div>
         </div>
     )
