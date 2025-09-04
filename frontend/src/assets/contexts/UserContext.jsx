@@ -9,12 +9,14 @@ export function UserProvider({ children }) {
         email: "",
         joinDate: "",
         money: 0,
+        inventory: {},
+        map: "",
         resources: {
             clay: 0,
-            wood: 0,
-            stone: 0,
+            gold: 0,
             steel: 0,
-            gold: 0
+            stone: 0,
+            wood: 0
         }
     })
 

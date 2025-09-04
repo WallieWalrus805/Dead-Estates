@@ -24,15 +24,15 @@ tbody {
 }
 
 tr {
-  height: 15px;
+  height: 40px;
   width: 600px;
   display: flex;
 }
 
-.void, .grass, .water, .boulder, .dirt {
+.tile {
   padding: 0;
-  width: 15px;
-  height: 15px;
+  width: 40px;
+  height: 40px;
 }
 
 .void {
@@ -40,24 +40,40 @@ tr {
 }
 
 .grass {
-  background-color: green;
+  background-color: #0c5d0c;
 }
 
 .boulder {
-  background-color: gray;
+  background-color: #504e4e;
 }
 
 .water {
-  background-color: blue;
+  background-color: #1966a8;
 }
 
-.dirt {
-  background-color: brown;
+.tree {
+  background-color: #1ba01b;
+}
+
+.snow {
+  background-color: #d5f4fa;
+}
+
+.sand {
+  background-color: #f7d18f;
+}
+
+.palm {
+  background-color: #6fd42f;
+}
+
+.ice {
+  background-color: #74b7e4;
 }
 
 .selected {
-  width: 13px;
-  height: 13px;
+  width: 38px;
+  height: 38px;
   border: 1px solid red;
   transition: all 0.2s ease-in-out;
 }
@@ -86,11 +102,11 @@ tr {
 
 .ah-main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border: 1px solid #99aaef;
-  height: 520px;
+  height: 560px;
   width: 600px;
   margin: 0 auto;
   text-align: center;
@@ -105,12 +121,15 @@ tr {
 }
 
 .ah-body {
-  border: 1px solid #99aaef;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  justify-self: bottom;
-  margin-right: 20px;
-  bottom: 0;
+  overflow-y: auto;
+  height: 480px;
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .ah-listing {
@@ -133,6 +152,14 @@ tr {
   border: 1px solid #99aaef;
 }
 
+.ah-footer {
+  display: flex;
+  right: 10%;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 10px;
+}
+
 h1 {
   color: white;
   font-size: 24px;
@@ -152,11 +179,9 @@ h1 {
 }
 
 .navbar {
-  top: 0;
   width: 600px;
+  height: 40px;
   left: 25%;
-  display: contents;
-  justify-content: space-between;
 }
 
 .navItem {

@@ -3,47 +3,49 @@ export const tileLegend = {
     "g": "grass",
     "w": "water",
     "b": "boulder",
-    "d": "dirt",
+    "t": "tree",
+    "s": "snow",
+    "n": "sand",
+    "p": "palm",
+    "i": "ice"
 }
 
-export const tileData =
-`gggggggggggggggggggggggggggggggggggggggg
-ggggggggdggggggggggggggggggggggggggggggg
-gggggggwwwwggggggggggggggggggggggggggggg
-ggggggwwwwwggggggggggggggggggggggggggggg
-gggggwwwwwgggggggggggggggggggggggggggggg
-gggggwwwgggggggggggggggggggggggggggggggg
-ggggbggggggdgggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-ggggddddddgggggggggggggggggggggggggggggg
-gggddddddbbggggggggggggggggggggggggggggg
-gggdddddwwbbgggggggggggggggggggggggggggg
-gggddddwwwwwgggggggggggggggggggggggggggg
-gggggddwwwwwgggggggggggggggggggggggggggg
-gggggggwwwwggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-ggggggggggbggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg
-gggggggggggggggggggggggggggggggggggggggg`
+// 3 templates: Forest, Beach, Snowfield
+// Forest has grass, water, boulders, trees
+// Beach has grass, water, sand, palm trees, boulders
+// Snowfield has boulders, snow, trees
+
+export const tileTemplates = [
+`ggggggggggggggg
+gbgggtggtgggggg
+ggnngggggggtggg
+gnwwnggggbggggg
+gnwwnggtggggggg
+gnwwngggggtggtg
+ggnwwnggggggggg
+gggnnggtgggggww
+gtggbgggggggtww
+gggggggggtgwwww
+gggggtgwwwwwwwg
+ggtgwwwwwwwwggb
+gggwwgggggggggg
+ggwwggggggggtgg
+wwwggtgggbggggg`,
+`gggggggg
+ggddddgg
+ggddddgg
+ggddddgg
+ggddddgg
+ggddddgg
+ggddddgg
+gggggggg`,
+`gggggggg
+ggddddgg
+ggddddgg
+ggddddgg
+ggddddgg
+ggddddgg
+ggddddgg
+gggggggg`
+]
+//ggggggggggggggg\ngbgggtggtgggggg\nggnngggggggtggg\ngnwwnggggbggggg\ngnwwnggtggggggg\ngnwwngggggtggtg\nggnwwnggggggggg\ngggnnggtgggggww\ngtggbgggggggtww\ngggggggggtgwwww\ngggggtgwwwwwwwg\nggtgwwwwwwwwggb\ngggwwgggggggggg\nggwwggggggggtgg\nwwwggtgggbggggg

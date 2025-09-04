@@ -5,6 +5,6 @@ export function Tile({ dataType }) {
     const className = tileLegend[dataType]
 
     return (
-        <td className={className} />
+        <td className={"tile " + className} />
     );
 }
