@@ -1,18 +1,16 @@
 import { PausedContext } from "../assets/contexts/PausedContext"
 import { useContext, useEffect, useState, useRef } from "react"
 import { TileRow } from "../components/TileRow"
-import { tileTemplates } from "../assets/data/tileData"
 import { UserContext } from "../assets/contexts/UserContext"
+import { MapView } from "../components/MapView"
 
 export function Map() {
     const { paused, setPaused } = useContext(PausedContext)
     const { user, setUser } = useContext(UserContext)
 
     const rows = user.map.split("\n").map(row => row.split(""))
-    // Implement later when selection is completed
-    // const rows = selection.split("\n").map(row => row.split(""))
 
-    // const [selection, setSelection] = useState(null)
+    const [selection, setSelection] = useState(false)
 
     const selectionRef = useRef(null)
     const [tileSelection, setTileSelection] = useState(null)
@@ -49,15 +47,20 @@ export function Map() {
             {paused ? (
                 <img className="Pause" src="/Pause.png" />
             ) : (
-                <table className="parcel">
-                    <tbody>
-                        {rows.map((row, index) => {
-                            return (
-                                <TileRow row={row} key={index} />
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <>
+                    <table className="parcel">
+                        <tbody>
+                            {rows.map((row, index) => {
+                                return (
+                                    <TileRow row={row} key={index} />
+                                )
+                            })}
+                        </tbody>
+                        {tileSelection ? (
+                        <MapView value={tileSelection}/>
+                    ) : null}
+                    </table>
+                </>
             )}
         </div>
     )

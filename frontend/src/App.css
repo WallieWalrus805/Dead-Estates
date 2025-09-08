@@ -9,12 +9,15 @@
 
 .GameFrame {
   color: white;
+  height: 600px;
+  width: 600px;
 }
 
 .parcel {
   height: 600px;
   width: 600px;
   display: grid;
+  position: relative;
 }
 
 tbody {
@@ -76,6 +79,19 @@ tr {
   height: 38px;
   border: 1px solid red;
   transition: all 0.2s ease-in-out;
+}
+
+.MapView {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  border-radius: 4px;
+  border: 2px solid #99aaef;
+  height: 436px;
+  width: 236px;
+  background-color: #d4d4cd;
+  align-items: center;
+  justify-content: center;
 }
 
 .ct-nav {
