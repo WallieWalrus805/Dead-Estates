@@ -1,11 +1,17 @@
-export function MapView({ value }) {
+import { Lumber } from "./buildings/Lumber"
+
+export function MapView({ value, building, onClose }) {
     return (
-        <caption className="MapView">
+        <div className="MapView">
             <h1>{value.classList[1]}</h1>
-            <button className="close-button" onClick={() => {
-                value.classList.remove("selected")
-                value = null
-            }}>X</button>
-        </caption>
+            {building ? (
+                <>
+                    {building.type === "lumber" && <Lumber building={building} />}
+                </>
+            ) : (
+                <p>No building present</p>
+            )}
+            <button className="close-button" onClick={onClose}>X</button>
+        </div>
     )
 }

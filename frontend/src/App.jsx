@@ -1,4 +1,4 @@
-import './App.css'
+import './css/App.css'
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
 import { Ah } from './pages/Ah'
 import { Ct } from './pages/Ct'

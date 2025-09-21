@@ -1,7 +1,7 @@
+/* Global */
 #root {
   margin: 0 auto;
   text-align: center;
-  border: 2px solid white;
   height: 600px;
   width: 600px;
   place-self: center;
@@ -11,8 +11,17 @@
   color: white;
   height: 600px;
   width: 600px;
+  display: flex;
 }
 
+h1 {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Map */
 .parcel {
   height: 600px;
   width: 600px;
@@ -82,40 +91,30 @@ tr {
 }
 
 .MapView {
-  position: absolute;
-  top: 80px;
-  left: 0;
+  display: flex;
   border-radius: 4px;
   border: 2px solid #99aaef;
-  height: 436px;
-  width: 236px;
+  padding: 10px;
+  margin-left: 10px;
   background-color: #d4d4cd;
+  /* align-items: center; */
+}
+
+.close-button {
+  margin: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  height: 25px;
+  cursor: pointer;
   align-items: center;
-  justify-content: center;
 }
 
-.ct-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 50px;
-  gap: 30px;
+.Pause {
+  padding: 35%;
 }
 
-.ct-icon {
-  width: 50px;
-  height: 50px;
-}
-
-.ct-balance {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
+/* Auction House */
 .ah-main {
   display: flex;
   flex-direction: column;
@@ -176,24 +175,36 @@ tr {
   padding: 10px;
 }
 
-h1 {
-  color: white;
-  font-size: 24px;
-  margin: 0;
-  padding: 0;
-}
-
 .ah-listing-details {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.Pause {
-  padding: 25%;
-  place-self: center;
+/* Commodities */
+.ct-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  gap: 30px;
 }
 
+.ct-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.ct-balance {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Navbar */
 .navbar {
   width: 600px;
   height: 40px;

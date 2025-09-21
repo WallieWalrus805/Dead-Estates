@@ -69,10 +69,12 @@ userRoutes.route("/users/:id").put(async (request, response) => {
         $set: {
             name: request.body.name,
             email: request.body.email,
-            password: request.body.password,
             joinDate: request.body.joinDate,
             money: request.body.money,
-            resources: request.body.resources
+            resources: request.body.resources,
+            inventory: request.body.inventory,
+            map: request.body.map,
+            buildings: request.body.buildings
         }
     }
     let data = await db.collection("users").updateOne({ _id: new ObjectId(request.params.id) }, mongoObject)
