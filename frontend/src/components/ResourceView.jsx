@@ -9,12 +9,13 @@ export function ResourceView() {
         <div className="MapView">
             <h1>Resources</h1>
             <div className="resources">
-                <p>Clay: {user.resources.clay}</p>
-                <p>Gold: {user.resources.gold}</p>
-                <p>Steel: {user.resources.steel}</p>
-                <p>Stone: {user.resources.stone}</p>
-                <p>Wood: {user.resources.wood}</p>
+                <h2>Clay: {user.resources.clay}</h2>
+                <h2>Gold: {user.resources.gold}</h2>
+                <h2>Steel: {user.resources.steel}</h2>
+                <h2>Stone: {user.resources.stone}</h2>
+                <h2>Wood: {user.resources.wood}</h2>
             </div>
+            <h2>Money: {user.money} Bone Bucks</h2>
         </div>
     )
 }

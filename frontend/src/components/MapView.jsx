@@ -1,15 +1,18 @@
-import { Lumber } from "./buildings/Lumber"
+import { Production } from "./buildings/Production"
+import { tileColors } from "../assets/data/TileData"
 
 export function MapView({ value, building, onClose }) {
+
+    const type = value.classList[1]
+
     return (
-        <div className="MapView">
-            <h1>{value.classList[1]}</h1>
+        <div className="MapView" style={{
+            backgroundColor: tileColors[type] || "#000000"
+        }}>
             {building ? (
-                <>
-                    {building.type === "lumber" && <Lumber building={building} />}
-                </>
+                <Production building={building} />
             ) : (
-                <p>No building present</p>
+                <h1>No building present</h1>
             )}
             <button className="close-button" onClick={onClose}>X</button>
         </div>

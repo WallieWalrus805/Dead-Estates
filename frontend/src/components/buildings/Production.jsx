@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext, useCallback } from "react"
 import { UserContext } from "../../assets/contexts/UserContext"
+import { buildingToPrice, buildingToTime } from "../../assets/data/TileData"
 
-export function Lumber({ building }) {
+export function Production({ building }) {
     const [timeRemaining, setTimeRemaining] = useState(0)
     const { user, setUser } = useContext(UserContext)
 
@@ -35,10 +36,10 @@ export function Lumber({ building }) {
         return () => clearInterval(timerInterval);
     }, [calculateTimeLeft])
 
-    function generateWood(amount) {
+    function generateResource(type) {
         return () => {
             const now = new Date();
-            const finish = new Date(now.getTime() + 3600000); // 1 hour from now
+            const finish = new Date(now.getTime() + buildingToTime[type]); // 1 hour from now (ms)
             setUser(prevState => {
                 const newBuildings = prevState.buildings.map(item =>
                     item.x === building.x && item.y === building.y
@@ -47,45 +48,48 @@ export function Lumber({ building }) {
                 )
                 return {
                     ...prevState,
+                    money: prevState.money - buildingToPrice[type],
                     buildings: newBuildings
                 }
             })
-            setTimeRemaining(3600) // 1 hour in seconds
+            setTimeRemaining(buildingToTime[type] / 1000) // 1 hour in seconds
         }
     }
 
-        function onClaim(type, value) {
-            setUser(prevState => {
-                const newBuildings = prevState.buildings.map(item =>
-                    item.x === building.x && item.y === building.y
-                        ? { ...item, timeFinished: null }
-                        : item
-                )
-                return {
-                    ...prevState,
-                    buildings: newBuildings
-                }
-            })
-            setUser(prevState => ({
+    function onClaim(type, value) {
+        const newType = (type[0].toLowerCase() + type.slice(1))
+        console.log(newType)
+        setUser(prevState => {
+            const newBuildings = prevState.buildings.map(item =>
+                item.x === building.x && item.y === building.y
+                    ? { ...item, timeFinished: null }
+                    : item
+            )
+            return {
                 ...prevState,
-                resources: {
-                    ...prevState.resources,
-                    [type]: prevState.resources[type] + value
-                }
-            }))
-            setTimeRemaining(null)
-        }
-
-        return (
-            <div className="BuildingView">
-                <h1>Lumber Mill</h1>
-                {timeRemaining > 0 ?
-                    <h2>Time remaining: {timeRemaining} seconds</h2>
-                    : timeRemaining !== null ?
-                        <button onClick={() => onClaim("wood", 10)}>Claim 10 Wood</button>
-                        :
-                        <button onClick={generateWood(10)}>Generate 10 Wood</button>
-                }
-            </div>
-        )
+                buildings: newBuildings
+            }
+        })
+        setUser(prevState => ({
+            ...prevState,
+            resources: {
+                ...prevState.resources,
+                [newType]: prevState.resources[newType] + value
+            }
+        }))
+        setTimeRemaining(null)
     }
+
+    return (
+        <div className="BuildingView">
+            <h1>{building.name}</h1>
+            {timeRemaining > 0 ?
+                <h2>Time remaining: {timeRemaining} seconds</h2>
+                : timeRemaining !== null ?
+                    <button onClick={() => onClaim(building.creates, 10)}>Claim 10 {building.creates}</button>
+                    :
+                    <button onClick={generateResource(building.type)}>Generate 10 {building.creates}</button>
+            }
+        </div>
+    )
+}

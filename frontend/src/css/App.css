@@ -15,8 +15,15 @@
 }
 
 h1 {
-  color: white;
+  color: black;
   font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  color: black;
+  font-size: 18px;
   margin: 0;
   padding: 0;
 }
@@ -97,13 +104,12 @@ tr {
   padding: 10px;
   margin-left: 10px;
   background-color: #d4d4cd;
-  /* align-items: center; */
 }
 
 .close-button {
   margin: 5px;
   background-color: red;
-  color: white;
+  color: black;
   border: none;
   height: 25px;
   cursor: pointer;
