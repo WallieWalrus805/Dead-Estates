@@ -6,7 +6,7 @@ export function TileRow({ row, rowIndex }) {
         <tr>
             {row.map((tile, index) => {
                 return (
-                    <Tile dataType={tile} key={index} position={rowIndex + "-" + index}/>
+                    <Tile dataType={tile} key={index} position={index + "-" + rowIndex}/>
                 )
             })}
         </tr>

@@ -98,12 +98,14 @@ tr {
 }
 
 .MapView {
-  display: flex;
+  display: inline-flex;
   border-radius: 4px;
   border: 2px solid #99aaef;
   padding: 10px;
   margin-left: 10px;
   background-color: #d4d4cd;
+  width: 200px;
+  min-width: 200px;
 }
 
 .close-button {

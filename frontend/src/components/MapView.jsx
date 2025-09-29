@@ -1,5 +1,7 @@
-import { Production } from "./buildings/Production"
-import { tileColors } from "../assets/data/TileData"
+import { Farm } from "./buildings/Farm"
+import { Parts } from "./buildings/Parts"
+import { Warehouse } from "./buildings/Warehouse"
+import { tileColors } from "../assets/data/tileData"
 
 export function MapView({ value, building, onClose }) {
 
@@ -10,7 +12,15 @@ export function MapView({ value, building, onClose }) {
             backgroundColor: tileColors[type] || "#000000"
         }}>
             {building ? (
-                <Production building={building} />
+                building.class === "Farm" ? (
+                    <Farm building={building} />
+                ) : building.class === "Warehouse" ? (
+                    <Warehouse building={building} />
+                ) : building.class === "Parts" ? (
+                    <Parts building={building} />
+                ) : (
+                    <h1>Unknown building type</h1>
+                )
             ) : (
                 <h1>No building present</h1>
             )}

@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext, useCallback } from "react"
 import { UserContext } from "../../assets/contexts/UserContext"
-import { buildingToPrice, buildingToTime } from "../../assets/data/TileData"
+import { buildingToPrice, buildingToTime } from "../../assets/data/tileData"
 
-export function Production({ building }) {
+export function Parts({ building }) {
     const [timeRemaining, setTimeRemaining] = useState(0)
     const { user, setUser } = useContext(UserContext)
 
@@ -83,6 +83,11 @@ export function Production({ building }) {
     return (
         <div className="BuildingView">
             <h1>{building.name}</h1>
+            <br />
+            <h2>Produces: {building.creates}</h2>
+            <h2>Cost: {buildingToPrice[building.type]}</h2>
+            <h2>Time to produce: {Math.round(100 * buildingToTime[building.type] / 3600000) / 100} hour(s)</h2>
+            <br />
             {timeRemaining > 0 ?
                 <h2>Time remaining: {timeRemaining} seconds</h2>
                 : timeRemaining !== null ?

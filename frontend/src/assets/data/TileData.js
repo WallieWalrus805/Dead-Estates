@@ -37,3 +37,47 @@ export const buildingToPrice = {
     "mill": 500,
     "mine": 1000,
 }
+
+export const partsToPrice = {
+    "plank": {
+        "wood": 4
+    },
+    "board": {
+        "clay": 3,
+        "wood": 10
+    },
+    "pillar": {
+        "wood": 10,
+        "stone": 5
+    },
+    "brick": {
+        "clay": 8,
+        "stone": 2
+    },
+    "tile": {
+        "clay": 6,
+        "stone": 6
+    },
+    "nail": {
+        "steel": 1
+    },
+    "beam": {
+        "steel": 4
+    },
+}
+
+export const buildingXpToLevel = {
+    0: 0,
+    50: 1,
+    250: 2,
+    1250: 3,
+    6250: 4
+}
+
+export const baseBuildingStats = {
+    "deposit": 5,
+    "lumber": 4,
+    "quarry": 3,
+    "mill": 2,
+    "mine": 1
+}
