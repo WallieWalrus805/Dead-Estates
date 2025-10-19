@@ -2,7 +2,7 @@ import { useState, useEffect, useContext, useCallback } from "react"
 import { UserContext } from "../../assets/contexts/UserContext"
 import { buildingToPrice, buildingToTime, buildingXpToLevel, baseBuildingStats } from "../../assets/data/tileData"
 
-export function Farm({ building }) {
+export function Farm({ building, close }) {
     const [timeRemaining, setTimeRemaining] = useState(0)
     const { user, setUser } = useContext(UserContext)
 
@@ -40,7 +40,7 @@ export function Farm({ building }) {
         if (user.money < buildingToPrice[type]) {
             alert("Not enough money!")
             return () => {}
-        } else if (user.resources[type] + toAdd > user.buildings.filter(b => b.class === "Warehouse" && b.type === building.type).reduce((sum, warehouse) => sum + (warehouse.capacity || 0), 0)) {
+        } else if (user.resources[type] + toAdd > user.buildings.filter(b => b.class === "Warehouse" && b.type === building.creates).reduce((sum, warehouse) => sum + (warehouse.capacity || 0), 0)) {
             alert("Not enough warehouse space!")
             return () => {}
         }
@@ -64,7 +64,6 @@ export function Farm({ building }) {
     }
 
     function onClaim(type, value) {
-        const newType = (type[0].toLowerCase() + type.slice(1))
         setUser(prevState => {
             const newBuildings = prevState.buildings.map(item =>
                 item.x === building.x && item.y === building.y
@@ -80,23 +79,25 @@ export function Farm({ building }) {
             ...prevState,
             resources: {
                 ...prevState.resources,
-                [newType]: prevState.resources[newType] + value
+                [type]: prevState.resources[type] + value
             }
         }))
         setTimeRemaining(null)
     }
 
-    const [hasSpace, setHasSpace] = useState(true);
+    const [hasSpace, setHasSpace] = useState(false);
 
     useEffect(() => {
         // Find all warehouses of the same type as the building
-        const warehouses = user.buildings.filter(b => b.class === "Warehouse" && b.type === building.type);
+        const warehouses = user.buildings.filter(b => b.class === "Warehouse" && b.type === building.creates);
         // Sum their capacity values
         const totalCapacity = warehouses.reduce((sum, warehouse) => sum + (warehouse.capacity || 0), 0);
         if (warehouses.length === 0) {
-            setHasSpace(true);
+            setHasSpace(true)
         } else {
-            setHasSpace(user.resources[building.type] > totalCapacity)
+            user.resources[building.creates] < totalCapacity ?
+            setHasSpace(false) :
+            setHasSpace(true);
         }
     }, [user.resources, user.buildings, building.type]);
 
@@ -125,15 +126,15 @@ export function Farm({ building }) {
         return [level, nextLevelXp];
     }
 
-    const toAdd = getMaxLevel(building.xp)[0] + baseBuildingStats[building.type]
+    const toAdd = getMaxLevel(building.xp)[0] + baseBuildingStats[building.creates]
 
     return (
         <div className="BuildingView">
             <h1>{building.name}</h1>
             <br />
             <h2>Produces: {building.creates}</h2>
-            <h2>Cost: {buildingToPrice[building.type]}</h2>
-            <h2>Time to produce: {Math.round(100 * buildingToTime[building.type] / 3600000) / 100} hour(s)</h2>
+            <h2>Cost: {buildingToPrice[building.creates]}</h2>
+            <h2>Time to produce: {Math.round(100 * buildingToTime[building.creates] / 3600000) / 100} hour(s)</h2>
             <h2>XP: {building.xp}/{getMaxLevel(building.xp)[1]}</h2>
             {getMaxLevel(building.xp)[1] ?
                 <h2>Level: {getMaxLevel(building.xp)[0]}</h2>
@@ -152,11 +153,12 @@ export function Farm({ building }) {
                     </button>
                     :
                     <button
-                        onClick={generateResource(building.type)}
+                        onClick={generateResource(building.creates)}
                         disabled={user.money < buildingToPrice[building.type] || hasSpace}
                     >Generate {toAdd} {building.creates}
                     </button>
             }
+            <button className="close-button" onClick={close}>X</button>
         </div>
     )
 }

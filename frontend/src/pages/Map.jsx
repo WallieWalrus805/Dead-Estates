@@ -1,15 +1,42 @@
 import { PausedContext } from "../assets/contexts/PausedContext"
 import { useContext, useEffect, useState, useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import { TileRow } from "../components/TileRow"
 import { UserContext } from "../assets/contexts/UserContext"
 import { MapView } from "../components/MapView"
 import { ResourceView } from "../components/ResourceView"
+import "../css/Map.css"
 
 export function Map() {
     const { paused, setPaused } = useContext(PausedContext)
     const { user, setUser } = useContext(UserContext)
 
-    const rows = user.map.split("\n").map(row => row.split(""))
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!user || !user.name) {
+            navigate("/")
+        }
+        setPaused(false)
+    }, [user, navigate, setPaused])
+
+    if (!user || !user.map) {
+        return <div>Loading...</div>
+    }
+
+    const mapRows = user.map.split("\n").map(r => r.split(""))
+    const topRows = user.top.split("\n").map(r => r.split(""))
+
+    // combined[r][c] === [mapValue, topValue]
+    const combined = mapRows.map((row, rIdx) =>
+        row.map((cell, cIdx) => [
+            cell,
+            (topRows[rIdx] && topRows[rIdx][cIdx]) ?? ""
+        ])
+    )
+
+    // keep the original variable names but now each cell is [rowValue, topValue]
+    const rows = combined
+    const tops = combined.map(row => row.map(cellPair => [...cellPair]))
 
     const selectionRef = useRef(null)
     const [tileSelection, setTileSelection] = useState(null)
@@ -58,7 +85,11 @@ export function Map() {
                         <tbody>
                             {rows.map((row, index) => {
                                 return (
-                                    <TileRow row={row} key={index} rowIndex={index} />
+                                    <TileRow
+                                        row={row}
+                                        key={index}
+                                        rowIndex={index}
+                                    />
                                 )
                             })}
                         </tbody>

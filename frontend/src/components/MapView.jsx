@@ -1,7 +1,7 @@
 import { Farm } from "./buildings/Farm"
-import { Parts } from "./buildings/Parts"
 import { Warehouse } from "./buildings/Warehouse"
-import { tileColors } from "../assets/data/tileData"
+import { Factory } from "./buildings/Factory"
+import { tileImages } from "../assets/data/tileData"
 
 export function MapView({ value, building, onClose }) {
 
@@ -9,22 +9,23 @@ export function MapView({ value, building, onClose }) {
 
     return (
         <div className="MapView" style={{
-            backgroundColor: tileColors[type] || "#000000"
+            backgroundColor: tileImages[type] || "#000000"
         }}>
-            {building ? (
-                building.class === "Farm" ? (
-                    <Farm building={building} />
-                ) : building.class === "Warehouse" ? (
-                    <Warehouse building={building} />
-                ) : building.class === "Parts" ? (
-                    <Parts building={building} />
+            <div className="BuildingView">
+                {building ? (
+                    building.class === "Farm" ? (
+                        <Farm building={building} close={onClose}/>
+                    ) : building.class === "Warehouse" ? (
+                        <Warehouse building={building} close={onClose} />
+                    ) : building.class === "Factory" ? (
+                        <Factory building={building} close={onClose} />
+                    ) : (
+                        <h1>Unknown building type</h1>
+                    )
                 ) : (
-                    <h1>Unknown building type</h1>
-                )
-            ) : (
-                <h1>No building present</h1>
-            )}
-            <button className="close-button" onClick={onClose}>X</button>
+                    <h1>No building present</h1>
+                )}
+            </div>
         </div>
     )
 }

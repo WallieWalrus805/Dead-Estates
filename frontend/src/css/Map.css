@@ -1,0 +1,115 @@
+/* Map */
+.parcel {
+  height: 600px;
+  width: 600px;
+  display: grid;
+  position: relative;
+}
+
+tbody {
+  height: 600px;
+  width: 600px;
+  gap: 0;
+}
+
+tr {
+  height: 40px;
+  width: 600px;
+  display: flex;
+}
+
+.tile {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.void {
+  background-color: transparent;
+}
+
+.grass {
+  background-image: url('/Grass.png');
+  background-size: contain; /* or "cover" / "contain" */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.boulder {
+  background-image: url('/Boulder.png');
+  background-size: cover; /* or "cover" / "contain" */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.water {
+  background-image: url('/Water.png');
+  background-size: 40px 40px; /* or "cover" / "contain" */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tree {
+  background-image: url('/Tree.png');
+  background-size: 40px 40px; /* or "cover" / "contain" */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.snow {
+  background-color: #d5f4fa;
+}
+
+.sand {
+  background-color: #f7d18f;
+}
+
+.palm {
+  background-color: #6fd42f;
+}
+
+.ice {
+  background-color: #74b7e4;
+}
+
+.selected {
+  width: 38px;
+  height: 38px;
+  border: 1px solid red;
+}
+
+.BuildingView {
+  /* display: grid;
+  grid-template-rows: auto auto;
+  justify-content: center; */
+  border: 1px solid #99aaef;
+  height: auto;
+  width: 200px;
+  margin: 0 auto;
+  /* text-align: center; */
+}
+
+.close-button {
+  margin: 5px;
+  background-color: red;
+  color: black;
+  border: none;
+  height: 25px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.MapView {
+  /* display: inline-flex; */
+  border-radius: 4px;
+  border: 2px solid #99aaef;
+  padding: 10px;
+  margin-left: 10px;
+  background-color: #d4d4cd;
+  width: 200px;
+  min-width: 200px;
+}
+
+.Pause {
+  padding: 35%;
+}

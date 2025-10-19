@@ -1,0 +1,66 @@
+/* Auction House */
+.ah-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #99aaef;
+  height: 560px;
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ah-nav {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-self: left;
+  border: 1px solid #99aaef;
+}
+
+.ah-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  height: 480px;
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ah-listing {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  justify-self: right;
+  margin: 20px;
+  padding: 20px;
+  height: 80px;
+  width: 400px;
+  border: 1px solid #99aaef;
+}
+
+.ah-listing-image {
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+  border: 1px solid #99aaef;
+}
+
+.ah-footer {
+  display: flex;
+  right: 10%;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.ah-listing-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

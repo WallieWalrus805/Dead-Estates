@@ -13,11 +13,11 @@ export function UserProvider({ children }) {
     inventory: {},
     map: "",
     resources: {
-      clay: 0,
-      gold: 0,
-      steel: 0,
-      stone: 0,
-      wood: 0
+      Clay: 0,
+      Gold: 0,
+      Steel: 0,
+      Stone: 0,
+      Wood: 0
     },
     buildings: {}
   });

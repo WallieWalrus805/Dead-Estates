@@ -1,5 +1,5 @@
 export const tileLegend = {
-    ".": "void",
+    "v": "void",
     "g": "grass",
     "w": "water",
     "b": "boulder",
@@ -10,60 +10,32 @@ export const tileLegend = {
     "i": "ice"
 }
 
-export const tileColors = {
-    "void": "#000000",
-    "grass": "#128f12",
-    "boulder": "#827f7f",
-    "water": "#2185db",
-    "tree": "#24d424",
-    "snow": "#d9f9ff",
-    "sand": "#ffd894",
-    "palm": "#86ff39",
-    "ice": "#82cdff",
+export const tileImages = {
+    "void": "null",
+    "grass": "/b.png",
+    "boulder": "/b.png",
+    "water": "/b.png",
+    "tree": "/b.png",
+    "snow": "/b.png",
+    "sand": "/b.png",
+    "palm": "/b.png",
+    "ice": "/b.png",
 }
 
 export const buildingToTime = {
-    "deposit": 2400000,
-    "lumber": 3600000,
-    "quarry": 7200000,
-    "mill": 9600000,
-    "mine": 14400000
+    "Clay": 2400000,
+    "Wood": 3600000,
+    "Stone": 7200000,
+    "Steel": 9600000,
+    "Gold": 14400000
 }
 
 export const buildingToPrice = {
-    "deposit": 50,
-    "lumber": 100,
-    "quarry": 200,
-    "mill": 500,
-    "mine": 1000,
-}
-
-export const partsToPrice = {
-    "plank": {
-        "wood": 4
-    },
-    "board": {
-        "clay": 3,
-        "wood": 10
-    },
-    "pillar": {
-        "wood": 10,
-        "stone": 5
-    },
-    "brick": {
-        "clay": 8,
-        "stone": 2
-    },
-    "tile": {
-        "clay": 6,
-        "stone": 6
-    },
-    "nail": {
-        "steel": 1
-    },
-    "beam": {
-        "steel": 4
-    },
+    "Clay": 50,
+    "Wood": 100,
+    "Stone": 200,
+    "Steel": 500,
+    "Gold": 1000,
 }
 
 export const buildingXpToLevel = {
@@ -75,9 +47,34 @@ export const buildingXpToLevel = {
 }
 
 export const baseBuildingStats = {
-    "deposit": 5,
-    "lumber": 4,
-    "quarry": 3,
-    "mill": 2,
-    "mine": 1
+    "Clay": 5,
+    "Wood": 4,
+    "Stone": 3,
+    "Steel": 2,
+    "Gold": 1
+}
+
+// Process times: Clay 1h, Wood 1.5h, Stone 2.5h, Steel 4h, Gold 6h
+export const plotsToData = {
+    "Urn": {
+        "Clay": 5,
+        "Wood": 0,
+        "Stone": 0,
+        "Steel": 0,
+        "Gold": 0
+    },
+    "Coffin": {
+        "Clay": 0,
+        "Wood": 5,
+        "Stone": 0,
+        "Steel": 0,
+        "Gold": 0
+    },
+    "Mausoleum": {
+        "Clay": 0,
+        "Wood": 0,
+        "Stone": 5,
+        "Steel": 0,
+        "Gold": 0
+    },
 }
