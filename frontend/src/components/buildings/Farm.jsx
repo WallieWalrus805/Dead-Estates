@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext, useCallback } from "react"
-import { UserContext } from "../../assets/contexts/UserContext"
+import { useState, useEffect, useCallback } from "react"
+import { useUser } from "../../assets/contexts/hooks/useUser"
 import { buildingToPrice, buildingToTime, buildingXpToLevel, baseBuildingStats } from "../../assets/data/tileData"
 
 export function Farm({ building, close }) {
     const [timeRemaining, setTimeRemaining] = useState(0)
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser } = useUser()
 
     // Memoized time calculation
     const calculateTimeLeft = useCallback(() => {

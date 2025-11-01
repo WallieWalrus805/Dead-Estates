@@ -1,7 +1,6 @@
-import { createContext, useState, useEffect } from "react";
-import { updateUser } from "../data/api";
-
-export const UserContext = createContext();
+import { useState, useEffect } from 'react'
+import { updateUser } from "../data/api"
+import { UserContext } from './UserContext'
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState({
@@ -20,7 +19,7 @@ export function UserProvider({ children }) {
       Wood: 0
     },
     buildings: {}
-  });
+  })
 
   useEffect(() => {
     // Skip initial mount (when user is empty)
@@ -28,15 +27,15 @@ export function UserProvider({ children }) {
 
     async function syncUserData() {
       try {
-        await updateUser(user._id, user);
-        console.log("Successfully synced user data");
+        await updateUser(user._id, user)
+        console.log("Successfully synced user data")
       } catch (error) {
-        console.error("Failed to sync user data:", error);
+        console.error("Failed to sync user data:", error)
       }
     }
 
-    syncUserData();
-  }, [user]);
+    syncUserData()
+  }, [user])
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

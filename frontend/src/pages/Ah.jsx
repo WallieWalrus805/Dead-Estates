@@ -1,11 +1,11 @@
 import { Listing } from "../components/Listing"
 import { getPosts } from "../assets/data/api"
-// import { UserContext } from "../assets/contexts/UserContext"
+// import { useUser } from "../assets/contexts/hooks/useUser"
 import { useState, useEffect, useContext } from "react"
 
 export function Ah() {
 
-    // const { user, setUser } = useContext(UserContext)
+    // const { user, setUser } = useUser
 
     const [listings, setListings] = useState([])
 

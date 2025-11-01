@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { UserContext } from "../../assets/contexts/UserContext"
+import { useUser } from "../../assets/contexts/hooks/useUser"
 
 export function Warehouse({ building, close }) {
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser } = useUser()
 
     return (
         <>

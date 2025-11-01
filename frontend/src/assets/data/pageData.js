@@ -7,16 +7,11 @@ export const pageData = [
     },
     {
         id: 1,
-        name: "Commodities Trade",
-        path: "/ct"
-    },
-    {
-        id: 2,
         name: "Leaderboard",
         path: "/leaderboard"
     },
     {
-        id: 3,
+        id: 2,
         name: "Settings",
         path: "/settings"
     }

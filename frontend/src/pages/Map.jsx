@@ -1,15 +1,15 @@
-import { PausedContext } from "../assets/contexts/PausedContext"
-import { useContext, useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import { usePaused } from "../assets/contexts/hooks/usePaused"
+import { useUser } from "../assets/contexts/hooks/useUser"
 import { TileRow } from "../components/TileRow"
-import { UserContext } from "../assets/contexts/UserContext"
 import { MapView } from "../components/MapView"
 import { ResourceView } from "../components/ResourceView"
 import "../css/Map.css"
 
 export function Map() {
-    const { paused, setPaused } = useContext(PausedContext)
-    const { user, setUser } = useContext(UserContext)
+    const { paused, setPaused } = usePaused()
+    const { user, setUser } = useUser()
 
     const navigate = useNavigate()
     useEffect(() => {

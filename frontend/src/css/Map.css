@@ -32,32 +32,35 @@ tr {
   background-image: url('/Grass.png');
   background-size: contain; /* or "cover" / "contain" */
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
 .boulder {
   background-image: url('/Boulder.png');
   background-size: cover; /* or "cover" / "contain" */
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
 .water {
   background-image: url('/Water.png');
-  background-size: 40px 40px; /* or "cover" / "contain" */
+  background-size: cover; /* or "cover" / "contain" */
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
 .tree {
   background-image: url('/Tree.png');
-  background-size: 40px 40px; /* or "cover" / "contain" */
+  background-size: cover; /* or "cover" / "contain" */
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
 .snow {
-  background-color: #d5f4fa;
+  background-image: url('/Snow.png');
+  background-size: cover; /* or "cover" / "contain" */
+  background-position: center;
+  background-repeat: repeat;
 }
 
 .sand {
@@ -79,14 +82,9 @@ tr {
 }
 
 .BuildingView {
-  /* display: grid;
-  grid-template-rows: auto auto;
-  justify-content: center; */
-  border: 1px solid #99aaef;
   height: auto;
   width: 200px;
   margin: 0 auto;
-  /* text-align: center; */
 }
 
 .close-button {
@@ -100,12 +98,11 @@ tr {
 }
 
 .MapView {
-  /* display: inline-flex; */
+  background-color: #282629;
   border-radius: 4px;
   border: 2px solid #99aaef;
   padding: 10px;
   margin-left: 10px;
-  background-color: #d4d4cd;
   width: 200px;
   min-width: 200px;
 }

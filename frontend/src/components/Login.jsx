@@ -1,8 +1,8 @@
-import { verifyUser } from "../assets/data/api"
-import { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
-import { UserContext } from "../assets/contexts/UserContext"
+import { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import { useUser } from "../assets/contexts/hooks/useUser"
+import { verifyUser } from "../assets/data/api"
 
 export function Login() {
 
@@ -11,7 +11,7 @@ export function Login() {
         password: ""
     })
 
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser } = useUser()
 
     const navigate = useNavigate()
 

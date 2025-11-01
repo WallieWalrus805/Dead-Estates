@@ -1,16 +1,16 @@
+import { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { usePaused } from "../assets/contexts/hooks/usePaused"
+import { useUser } from "../assets/contexts/hooks/useUser"
 import { pageData } from "../assets/data/pageData"
-import { PausedContext } from "../assets/contexts/PausedContext"
-import { useContext, useEffect } from "react"
-import { UserContext } from "../assets/contexts/UserContext"
 
 export function Navbar() {
 
     const navigate = useNavigate()
 
-    const { paused, setPaused } = useContext(PausedContext)
+    const { paused, setPaused } = usePaused()
 
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser } = useUser()
 
     function handleLogout() {
         sessionStorage.removeItem("User")

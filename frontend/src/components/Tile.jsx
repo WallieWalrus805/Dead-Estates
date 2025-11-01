@@ -1,10 +1,9 @@
+import { useUser } from "../assets/contexts/hooks/useUser"
 import { tileLegend } from "../assets/data/tileData";
-import { useContext } from "react"
-import { UserContext } from "../assets/contexts/UserContext"
 
 export function Tile({ dataType, top, position }) {
 
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser } = useUser()
 
     const className = tileLegend[dataType]
     const className2 = tileLegend[top]

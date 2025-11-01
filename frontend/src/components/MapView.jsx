@@ -1,16 +1,13 @@
 import { Farm } from "./buildings/Farm"
 import { Warehouse } from "./buildings/Warehouse"
 import { Factory } from "./buildings/Factory"
-import { tileImages } from "../assets/data/tileData"
 
 export function MapView({ value, building, onClose }) {
 
     const type = value.classList[1]
 
     return (
-        <div className="MapView" style={{
-            backgroundColor: tileImages[type] || "#000000"
-        }}>
+        <div className={"MapView " + type}>
             <div className="BuildingView">
                 {building ? (
                     building.class === "Farm" ? (
