@@ -9,9 +9,10 @@
 
 .GameFrame {
   color: white;
-  height: 600px;
-  width: 600px;
-  display: flex;
+  height: 700px;
+  width: 800px;
+  display: grid;  
+  place-self: center;
 }
 
 h1 {
@@ -26,29 +27,6 @@ h2 {
   font-size: 18px;
   margin: 0;
   padding: 0;
-}
-
-/* Commodities */
-.ct-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 50px;
-  gap: 30px;
-}
-
-.ct-icon {
-  width: 50px;
-  height: 50px;
-}
-
-.ct-balance {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
 }
 
 /* Navbar */

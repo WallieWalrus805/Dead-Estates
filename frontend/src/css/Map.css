@@ -4,6 +4,7 @@
   width: 600px;
   display: grid;
   position: relative;
+  grid-column: 1;
 }
 
 tbody {
@@ -35,8 +36,8 @@ tr {
   background-repeat: repeat;
 }
 
-.boulder {
-  background-image: url('/Boulder.png');
+.snow {
+  background-image: url('/Snow.png');
   background-size: cover; /* or "cover" / "contain" */
   background-position: center;
   background-repeat: repeat;
@@ -49,22 +50,22 @@ tr {
   background-repeat: repeat;
 }
 
+.sand {
+  background-color: #f7d18f;
+}
+
+.boulder {
+  background-image: url('/Boulder.png');
+  background-size: cover; /* or "cover" / "contain" */
+  background-position: center;
+  background-repeat: repeat;
+}
+
 .tree {
   background-image: url('/Tree.png');
   background-size: cover; /* or "cover" / "contain" */
   background-position: center;
   background-repeat: repeat;
-}
-
-.snow {
-  background-image: url('/Snow.png');
-  background-size: cover; /* or "cover" / "contain" */
-  background-position: center;
-  background-repeat: repeat;
-}
-
-.sand {
-  background-color: #f7d18f;
 }
 
 .palm {
@@ -81,10 +82,61 @@ tr {
   border: 1px solid red;
 }
 
+.building-Selected {
+  background-color: #282629;
+  border-radius: 4px;
+  border: 2px solid #99aaef;
+  width: 60px;
+  height: 60px;
+}
+
+/* Details Panel */
+
 .BuildingView {
-  height: auto;
-  width: 200px;
-  margin: 0 auto;
+  border: 2px solid #99aaef;
+  width: 192px;
+  max-width: 192px;
+  margin-left: 4px;
+}
+
+.ResourceView {
+  background-color: #282629;
+  border-radius: 4px;
+  border: 2px solid #99aaef;
+  width: 192px;
+  max-width: 192px;
+  margin-left: 4px;
+}
+
+.InventoryView {
+  background-color: #282629;
+  border-radius: 4px;
+  border: 2px solid #99aaef;
+  width: 576px;
+  max-width: 576px;
+  padding: 10px;
+  display: flex
+}
+
+.lumber {
+  background-image: url('/Building_Wood.png');
+}
+
+.Inventory-Item {
+  background-color: #282629;
+  border-radius: 4px;
+  border: 2px solid #99aaef;
+  background-size: 70px; /* or "cover" / "contain" */
+  background-position: left;
+  background-repeat: no-repeat;
+  width: 164px;
+  text-align: right;
+  padding-right: 4px;
+  margin-right: 10px;
+}
+
+.BuildingView, .ResourceView {
+  grid-column: 2;
 }
 
 .close-button {
@@ -97,14 +149,16 @@ tr {
   align-items: center;
 }
 
-.MapView {
-  background-color: #282629;
-  border-radius: 4px;
-  border: 2px solid #99aaef;
-  padding: 10px;
-  margin-left: 10px;
-  width: 200px;
-  min-width: 200px;
+.edit-button {
+  background-image: url('/womp_Womp.png');
+  background-size: 96px; /* or "cover" / "contain" */
+  background-position: left;
+  background-repeat: no-repeat;
+  height: 96px;
+  width: 192px;
+  grid-column: 2;
+  text-align: right;
+  margin-left: 4px;
 }
 
 .Pause {

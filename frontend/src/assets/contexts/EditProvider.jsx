@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { EditContext } from './EditContext';
 
 export function EditProvider({ children }) {
-    const [edit, setEdit] = useState(false);
+    const [editMode, setEditMode] = useState(false);
     const contextValue = {
-        edit,
-        setEdit
+        editMode,
+        setEditMode
     }
-
-    console.log('EditProvider contextValue:', contextValue)
 
     return (
         <EditContext.Provider value={contextValue}>
