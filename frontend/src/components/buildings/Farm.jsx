@@ -129,7 +129,7 @@ export function Farm({ building, close }) {
     const toAdd = getMaxLevel(building.xp)[0] + baseBuildingStats[building.creates]
 
     return (
-        <div className="BuildingView">
+        <>
             <h1>{building.name}</h1>
             <br />
             <h2>Produces: {building.creates}</h2>
@@ -159,6 +159,6 @@ export function Farm({ building, close }) {
                     </button>
             }
             <button className="close-button" onClick={close}>X</button>
-        </div>
+        </>
     )
 }

@@ -1,15 +1,16 @@
 import { useUser } from "../assets/contexts/hooks/useUser"
 import { tileLegend } from "../assets/data/tileData";
 
-export function Tile({ dataType, top, position }) {
+export function Tile({ data }) {
 
     const { user, setUser } = useUser()
 
-    const className = tileLegend[dataType]
-    const className2 = tileLegend[top]
-    const building = user.buildings.find(b => b.y === parseInt(position.split("-")[1]) && b.x === parseInt(position.split("-")[0]))
+    const className = tileLegend[data.tile]
+    const building = data.building || ""
     
     return (
-        <td className={"tile " + className + " " + className2} id={position}/>
+        <>
+            <td className={`tile ${className} ${building?.type || ""}`} id={data.id}/>
+        </>
     );
 }

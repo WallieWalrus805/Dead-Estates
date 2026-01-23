@@ -1,13 +1,17 @@
 export const tileLegend = {
-    "v": "void",
     "g": "grass",
-    "w": "water",
-    "b": "boulder",
-    "t": "tree",
-    "s": "snow",
     "n": "sand",
+    "s": "snow",
+    "t": "tree",
     "p": "palm",
-    "i": "ice"
+    "e": "evergreen",
+    "b": "boulder",
+    "d": "sandstone",
+    "k": "packed-ice",
+    "f": "flowers",
+    "h": "seashells",
+    "i": "ice",
+    "w": "water",
 }
 
 export const tileImages = {

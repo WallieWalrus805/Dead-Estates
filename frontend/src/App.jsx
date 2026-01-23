@@ -3,7 +3,7 @@ import axios from 'axios'
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
 import { PausedProvider } from './assets/contexts/PausedProvider'
 import { UserProvider } from './assets/contexts/UserProvider'
-import { EditProvider } from './assets/contexts/EditProvider'
+import { TerraProvider } from './assets/contexts/TerraProvider'
 import './css/App.css'
 import { Ah } from './pages/Ah'
 import { Landing } from './pages/Landing'
@@ -24,7 +24,7 @@ function App() {
   return (
     <PausedProvider>
       <UserProvider>
-        <EditProvider>
+        <TerraProvider>
           <Router>
             <Routes>
               <Route path="/" element={<Landing />} />
@@ -36,7 +36,7 @@ function App() {
               </Route>
             </Routes>
           </Router>
-        </EditProvider>
+        </TerraProvider>
       </UserProvider>
     </PausedProvider>
   )

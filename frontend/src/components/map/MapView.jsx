@@ -4,10 +4,8 @@ import { Factory } from "../buildings/Factory"
 
 export function MapView({ value, building, onClose }) {
 
-    const type = value.classList[1]
-
     return (
-        <div className={"BuildingView " + type}>
+        <div className={"BuildingView"}>
             {building ? (
                 building.class === "Farm" ? (
                     <Farm building={building} close={onClose} />

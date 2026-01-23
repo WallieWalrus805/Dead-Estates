@@ -1,11 +1,11 @@
 import { useEffect } from "react"
 import { useUser } from "../../assets/contexts/hooks/useUser"
-import { useEdit } from "../../assets/contexts/hooks/useEdit"
+import { useTerra } from "../../assets/contexts/hooks/useTerra"
 
 export function ResourceView() {
 
     const { user, setUser } = useUser()
-    const editContext = useEdit()
+    const terraContext = useTerra()
 
     return (
         <div className="ResourceView">

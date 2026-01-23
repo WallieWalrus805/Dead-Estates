@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { usePaused } from "../assets/contexts/hooks/usePaused"
 import { useUser } from "../assets/contexts/hooks/useUser"
-import { useEdit } from "../assets/contexts/hooks/useEdit"
+import { useTerra } from "../assets/contexts/hooks/useTerra"
 import { TileRow } from "../components/TileRow"
 import { Inventory } from "../components/map/Inventory"
 import { MapView } from "../components/map/MapView"
@@ -12,7 +12,7 @@ import "../css/Map.css"
 export function Map() {
     const { paused, setPaused } = usePaused()
     const { user, setUser } = useUser()
-    const editContext = useEdit()
+    // const terraContext = useTerra()
 
     const navigate = useNavigate()
     useEffect(() => {
@@ -26,21 +26,12 @@ export function Map() {
         return <div>Loading...</div>
     }
 
-    const mapRows = user.map.split("\n").map(r => r.split(""))
-    const topRows = user.top.split("\n").map(r => r.split(""))
-
-    // combined[r][c] === [mapValue, topValue]
-    const combined = mapRows.map((row, rIdx) =>
-        row.map((cell, cIdx) => [
-            cell,
-            (topRows[rIdx] && topRows[rIdx][cIdx]) ?? ""
-        ])
-    )
-
-    // keep the original variable names but now each cell is [rowValue, topValue]
-    const rows = combined
-    const tops = combined.map(row => row.map(cellPair => [...cellPair]))
-
+    const rows = user.map.split("\n").map(r => r.split(""))
+        .map((row, rowIndex) => row.map((tile, colIndex) => ({
+            tile,
+            id: `${colIndex}-${rowIndex}`,
+            building: user.buildings.find(b => b.x === colIndex && b.y === rowIndex) || null
+        })))
     const selectionRef = useRef(null)
     const [tileSelection, setTileSelection] = useState(null)
 
@@ -69,12 +60,13 @@ export function Map() {
                         tile.classList.add("selected")
                         selectionRef.current = tile
                     }
-                } else if (e.target.className === "edit-button") {
-                    editContext.setEditMode(prev => {
-                        const newEdit = !prev
-                        return newEdit
-                    })
                 }
+                // else if (e.target.className === "terra-button") {
+                //     terraContext.setTerraMode(prev => {
+                //         const newTerra = !prev
+                //         return newTerra
+                //     })
+                // }
             }
         }
 
@@ -85,7 +77,8 @@ export function Map() {
     }, [])
 
     const buildingRef = useRef(null)
-
+    const [edit, setEdit] = useState(false)
+    const buildingPlaceRef = useRef(null)
     useEffect(() => {
         let offsetX = 0
         let offsetY = 0
@@ -108,7 +101,7 @@ export function Map() {
                 buildingRef.current.style.pointerEvents = "none" // let mouse events pass through to underlying tiles
                 buildingRef.current.style.zIndex = "9999"
 
-                console.log("Down")
+                setEdit(true)
             }
         }
 
@@ -116,6 +109,21 @@ export function Map() {
             if (buildingRef.current && buildingRef.current.classList?.contains("building-Selected")) {
                 buildingRef.current.style.left = `${e.clientX - offsetX}px`
                 buildingRef.current.style.top = `${e.clientY - offsetY}px`
+
+                // Remove selected class from all td elements
+                const selectedTiles = document.querySelectorAll("td.selected");
+                selectedTiles.forEach(tile => {
+                    tile.classList.remove("selected");
+                });
+
+                // Add selected class to td elements under the mouse
+                const elementsUnderMouse = document.elementsFromPoint(e.clientX, e.clientY);
+                elementsUnderMouse.forEach(el => {
+                    if (el.tagName === "TD") {
+                        el.classList.add("selected");
+                        buildingPlaceRef.current = el;
+                    }
+                });
             }
         }
 
@@ -127,6 +135,15 @@ export function Map() {
                 buildingRef.current.style.top = ""
                 buildingRef.current.style.pointerEvents = ""
                 buildingRef.current.style.zIndex = ""
+
+                // Remove selected class from all td elements
+                const selectedTiles = document.querySelectorAll("td.selected");
+                selectedTiles.forEach(tile => {
+                    tile.classList.remove("selected");
+                    const info = JSON.parse(buildingRef.current.getAttribute("data-item"))
+                    tile.classList.add(info.type)
+                });
+                buildingPlaceRef.current = null;
             }
         }
 
@@ -143,9 +160,12 @@ export function Map() {
 
     useEffect(() => {
         const handleUnDrag = (e) => {
-            buildingRef.current.classList.add("Inventory-Item")
-            buildingRef.current.classList.remove("building-Selected")
-            console.log("Up")
+            if (buildingRef.current) {
+                buildingRef.current.classList.add("Inventory-Item")
+                buildingRef.current.classList.remove("building-Selected")
+                buildingRef.current = null
+                setEdit(false)
+            }
         }
         window.addEventListener("mouseup", handleUnDrag)
         return () => {
@@ -173,22 +193,19 @@ export function Map() {
                             }
                         </tbody>
                     </table>
-                    {tileSelection ? (
+                    {!edit ? (tileSelection ? (
                         <MapView
                             value={tileSelection}
                             building={user.buildings.find(b => b.x + "-" + b.y === tileSelection.id)}
                             onClose={mapViewClose}
                         />
-                    ) : <ResourceView />}
-                    {editContext.editMode ? (
-                        <Inventory />
-                    ) : null
-                    }
-                    <button
-                        className="edit-button"
+                    ) : <ResourceView />) : null}
+                    <Inventory />
+                    {/* <button
+                        className="terra-button"
                     >
-                        Edit Map
-                    </button>
+                        Terraform
+                    </button> */}
                 </>
             )}
         </div>

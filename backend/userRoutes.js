@@ -74,7 +74,6 @@ userRoutes.route("/users/:id").put(async (request, response) => {
             resources: request.body.resources,
             inventory: request.body.inventory,
             map: request.body.map,
-            top: request.body.top,
             buildings: request.body.buildings
         }
     }
