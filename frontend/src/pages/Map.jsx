@@ -142,6 +142,17 @@ export function Map() {
                     tile.classList.remove("selected");
                     const info = JSON.parse(buildingRef.current.getAttribute("data-item"))
                     tile.classList.add(info.type)
+                    info.x = parseInt(tile.id.split("-")[0])
+                    info.y = parseInt(tile.id.split("-")[1])
+
+                    // Add building to active data
+                    setUser(prevState => ({
+                        ...prevState,
+                        buildings: [
+                            ...prevState.buildings,
+                            info
+                        ]
+                    }))
                 });
                 buildingPlaceRef.current = null;
             }
