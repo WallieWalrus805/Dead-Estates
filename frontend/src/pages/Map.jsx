@@ -35,9 +35,12 @@ export function Map() {
     const selectionRef = useRef(null)
     const [tileSelection, setTileSelection] = useState(null)
 
-    function mapViewClose() {
+    function mapViewClose(remove) {
         if (selectionRef.current) {
             selectionRef.current.classList.remove("selected")
+            if (remove) {
+                console.log(tileSelection)
+            }
             setTileSelection(null)
         }
     }

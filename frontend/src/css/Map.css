@@ -156,7 +156,7 @@ tr {
   position: absolute;
   inset: 0;
   background-image: url('/Buildings.png');
-  background-size: 240px 80px;
+  background-size: 200px 80px;
   background-repeat: no-repeat;
   pointer-events: none;
 }
@@ -229,12 +229,13 @@ tr {
 
 .close-button {
   margin: 5px;
-  background-color: red;
+  background-image: url("/Delete_Button.png");
+  background-repeat: no-repeat;
+  background-color: black;
+  height: auto;
   color: black;
-  border: none;
-  height: 25px;
+  border: 2px solid black;
   cursor: pointer;
-  align-items: center;
 }
 
 .terra-button {

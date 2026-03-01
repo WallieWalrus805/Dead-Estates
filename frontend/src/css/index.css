@@ -1,6 +1,5 @@
 :root {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
   color-scheme: light dark;
   background-color: black;
 }
@@ -22,4 +21,21 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+
+
+.Landing-Title {
+  background-image: url("/Title_White.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  height: 80px;
+  width: auto;
+}
+
+.Landing {
+  background-image: url("/Road.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 600px;
 }

@@ -158,7 +158,7 @@ export function Farm({ building, close }) {
                     >Generate {toAdd} {building.creates}
                     </button>
             }
-            <button className="close-button" onClick={close}>X</button>
+            <button className="close-button" onClick={close}></button>
         </>
     )
 }
