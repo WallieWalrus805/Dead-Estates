@@ -29,11 +29,11 @@ export function CreateUser() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input placeholder={"Name"} onChange={handleChange} name="name" required maxLength={20}/>
-            <input placeholder={"Email"} onChange={handleChange} name="email" required maxLength={40}/>
-            <input placeholder={"Password"} onChange={handleChange} name="password" type="password" required maxLength={20}/>
-            <button type="submit">Create Account</button>
+        <form className="Signup-Form" onSubmit={handleSubmit}>
+            <input className="Signup-Input" placeholder={"Name"} onChange={handleChange} name="name" required maxLength={20}/>
+            <input className="Signup-Input" placeholder={"Email"} onChange={handleChange} name="email" required maxLength={40}/>
+            <input className="Signup-Input" placeholder={"Password"} onChange={handleChange} name="password" type="password" required maxLength={20}/>
+            <button className="Signup-Enter" type="submit">Create Account</button>
         </form>
     )
 }

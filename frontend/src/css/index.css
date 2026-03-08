@@ -12,17 +12,27 @@ body {
 }
 
 button {
+  margin: 2%;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  padding: 10px 20px;
+  height: 40px;
+  font-size: 16px;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
 
+/* Landing */
+
+.Landing {
+  background-image: url("/Road.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 600px;
+  display: grid;
+  align-content: start;
+  justify-content: center;
+}
 
 .Landing-Title {
   background-image: url("/Title_White.png");
@@ -30,12 +40,58 @@ button {
   background-repeat: no-repeat;
   background-position-x: center;
   height: 80px;
-  width: auto;
+  width: 240px;
 }
 
-.Landing {
-  background-image: url("/Road.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 600px;
+.Landing-Form, .Signup-Form, .Login-Form {
+  display: grid;
+  width: 300px;
+  justify-items: center;
+}
+
+.Landing-Login {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 100px;
+  color: white;
+  background-color: #080808;
+}
+
+.Landing-Signup {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 180px;
+  color: black;
+  background-color: #dadada;
+}
+
+.Back {
+  width: 100px;
+  color: white;
+  background-color:#080808;
+}
+
+/* Login */
+
+.Login-Input, .Signup-Input {
+  margin: 2%;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  height: 25px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.Login-Enter {
+  width: 100px;
+  color: white;
+  background-color:#0b8a00;
+}
+
+/* Signup */
+
+.Signup-Enter {
+  width: 150px;
+  color: white;
+  background-color:#0b8a00;
 }

@@ -33,8 +33,9 @@ export function Login() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="Login-Form" onSubmit={handleSubmit}>
             <input
+                className="Login-Input"
                 placeholder="Name"
                 onChange={handleChange}
                 name="name"
@@ -43,6 +44,7 @@ export function Login() {
                 autoComplete="username"
             />
             <input
+                className="Login-Input"
                 placeholder="Password"
                 onChange={handleChange}
                 name="password"
@@ -51,7 +53,7 @@ export function Login() {
                 maxLength={20}
                 autoComplete="current-password"
             />
-            <button type="submit">Login</button>
+            <button className="Login-Enter" type="submit">Login</button>
         </form>
     )
 }
