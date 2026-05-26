@@ -8,17 +8,6 @@ export function UserProvider({ children }) {
     name: "",
     email: "",
     joinDate: "",
-    money: 0,
-    inventory: {},
-    map: "",
-    resources: {
-      Clay: 0,
-      Gold: 0,
-      Steel: 0,
-      Stone: 0,
-      Wood: 0
-    },
-    buildings: {}
   })
 
   useEffect(() => {

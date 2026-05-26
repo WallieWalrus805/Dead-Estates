@@ -48,14 +48,6 @@ userRoutes.route("/users").post(async (request, response) => {
             email: request.body.email,
             password: hash,
             joinDate: new Date(),
-            money: 1000,
-            resources: {
-                clay: 0,
-                wood: 0,
-                stone: 0,
-                steel: 0,
-                gold: 0
-            }
         }
         let data = await db.collection("users").insertOne(mongoObject)
         response.json(data)
@@ -70,11 +62,6 @@ userRoutes.route("/users/:id").put(async (request, response) => {
             name: request.body.name,
             email: request.body.email,
             joinDate: request.body.joinDate,
-            money: request.body.money,
-            resources: request.body.resources,
-            inventory: request.body.inventory,
-            map: request.body.map,
-            buildings: request.body.buildings
         }
     }
     let data = await db.collection("users").updateOne({ _id: new ObjectId(request.params.id) }, mongoObject)
@@ -93,7 +80,7 @@ userRoutes.route("/users/login").post(async (request, response) => {
     let db = database.getDb()
 
     const user = await db.collection("users").findOne({ name: request.body.name })
-
+    
     if (user) {
         let confirmation = await bcrypt.compare(request.body.password, user.password)
         if (confirmation) {
