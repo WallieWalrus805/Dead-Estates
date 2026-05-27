@@ -29,6 +29,11 @@ h2 {
   padding: 0;
 }
 
+#Scene_I {
+  width: 600px;
+  height: 600px;
+}
+
 /* Navbar */
 .navbar {
   width: 600px;

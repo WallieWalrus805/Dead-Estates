@@ -1,7 +1,8 @@
 import { CreateUser } from "../components/CreateUser"
 import { Login } from "../components/Login"
 import { Welcome } from "../animations/Welcome"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import launch from "../animations/Scene I.mp4";
 
 export function Landing() {
 
@@ -10,12 +11,16 @@ export function Landing() {
     //view == 2 --> Create
     const [view, setView] = useState(0)
     const [showWelcome, setShowWelcome] = useState(true)
+    const videoRef = useRef(null)
 
     useEffect(() => {
         const handleUserInteraction = () => {
-            const timer = setTimeout(() => setShowWelcome(false), 1000)
+            if (videoRef.current) {
+                videoRef.current.play().catch(() => {})
+            }
+            const timer = setTimeout(() => setShowWelcome(false), 33000)
             return () => clearTimeout(timer)
-            document.removeEventListener("click", handleUserInteraction);
+            setShowWelcome(false)
         };
 
         document.addEventListener("click", handleUserInteraction);
@@ -27,7 +32,11 @@ export function Landing() {
 
     return (
         <>
-            {showWelcome && <Welcome />}
+            {showWelcome &&
+                <video id="Scene_I" ref={videoRef} autoPlay playsInline>
+                    <source src={launch} type="video/mp4" />
+                </video>
+            }
             {!showWelcome && <div className="Landing">
                 <div className="Landing-Form">
                     <div className="Landing-Title" />

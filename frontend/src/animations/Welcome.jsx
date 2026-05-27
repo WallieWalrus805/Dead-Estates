@@ -1,21 +1,13 @@
 import { useEffect, useRef } from "react";
-import launch from "../assets/audio/launch.mp3";
+import launch from "../animations/Scene I.mp4";
 
 export function Welcome() {
-    const audioRef = useRef(null);
 
-    useEffect(() => {
-        const handleUserInteraction = () => {
-            audioRef.current.play();
-            document.removeEventListener("click", handleUserInteraction);
-        };
-
-        document.addEventListener("click", handleUserInteraction);
-
-        return () => {
-            document.removeEventListener("click", handleUserInteraction);
-        };
-    }, []);
-
-    return <audio ref={audioRef} src={launch} />;
+    return (
+        <>
+            <video id="Scene_I" autoPlay controls playsInline>
+                <source src={launch} type="video/mp4"/>
+            </video>
+        </>
+    );
 }
