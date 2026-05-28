@@ -43,7 +43,7 @@ export function Landing() {
                     {!view ?
                         <>
                             <button className="Landing-Login" onClick={() => setView(1)}>Login</button>
-                            <button className="Landing-Signup" onClick={() => setView(2)}>Create New Account</button>
+                            <button className="Landing-Signup" onClick={() => setView(2)}>Sign Up</button>
                         </> :
                         <>
                             {view == 1 ?
