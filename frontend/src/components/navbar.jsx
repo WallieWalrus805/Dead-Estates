@@ -58,7 +58,7 @@ export function Navbar() {
                             </Link>
                         )
                     })}
-                    <button className="navItem" onClick={handleLogout}>Log Out</button>
+                    <a className="navItem" onClick={handleLogout}>Log Out</a>
                     <a>{user.name}</a>
                 </div>
             ) : <></>}

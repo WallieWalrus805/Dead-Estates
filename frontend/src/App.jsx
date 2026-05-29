@@ -3,6 +3,7 @@ import axios from 'axios'
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
 import { PausedProvider } from './assets/contexts/PausedProvider'
 import { UserProvider } from './assets/contexts/UserProvider'
+import { TextProvider } from './assets/contexts/TextProvider'
 import './css/App.css'
 import { Landing } from './pages/Landing'
 import { Map } from './pages/Map'
@@ -20,14 +21,16 @@ function App() {
   return (
     <PausedProvider>
       <UserProvider>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route element={<Layout />}>
-                <Route path="/map" element={<Map className="Frame" />} />
-              </Route>
-            </Routes>
-          </Router>
+        <TextProvider>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route element={<Layout />}>
+                  <Route path="/map" element={<Map className="Frame" />} />
+                </Route>
+              </Routes>
+            </Router>
+          </TextProvider>
       </UserProvider>
     </PausedProvider>
   )

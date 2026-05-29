@@ -14,19 +14,22 @@ export function Landing() {
     const videoRef = useRef(null)
 
     useEffect(() => {
+        const handleVideoEnd = () => setShowWelcome(false)
+
         const handleUserInteraction = () => {
             if (videoRef.current) {
                 videoRef.current.play().catch(() => {})
+                videoRef.current.addEventListener("ended", handleVideoEnd, { once: true })
             }
-            const timer = setTimeout(() => setShowWelcome(false), 33000)
-            return () => clearTimeout(timer)
-            setShowWelcome(false)
         };
 
         document.addEventListener("click", handleUserInteraction);
 
         return () => {
             document.removeEventListener("click", handleUserInteraction);
+            if (videoRef.current) {
+                videoRef.current.removeEventListener("ended", handleVideoEnd)
+            }
         };
     }, [])
 

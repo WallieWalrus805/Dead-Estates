@@ -5,7 +5,7 @@ export function Welcome() {
 
     return (
         <>
-            <video id="Scene_I" autoPlay controls playsInline>
+            <video id="Scene_I" playsInline>
                 <source src={launch} type="video/mp4"/>
             </video>
         </>
