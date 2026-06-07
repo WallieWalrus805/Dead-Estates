@@ -10,8 +10,9 @@
 .GameFrame {
   color: white;
   width: 600px;
-  display: grid;  
-  place-self: center;
+  height: 600px;
+  display: grid;
+  border: 1px solid blue;
 }
 
 h1 {
@@ -54,7 +55,8 @@ h2 {
 .navbar {
   width: 600px;
   height: 40px;
-  left: 25%;
+  position: absolute;
+  padding-top: 10px;
 }
 
 .navItem {

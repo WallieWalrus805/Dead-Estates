@@ -30,7 +30,6 @@ button {
   background-repeat: no-repeat;
   background-position: 200px 75px;
   height: 600px;
-  border: 1px solid blue
 }
 
 .Landing-Title {
@@ -70,7 +69,7 @@ button {
   background-color: #dadada;
 }
 
-.Back {
+.back-button {
   width: 100px;
   color: white;
   background-color:#080808;

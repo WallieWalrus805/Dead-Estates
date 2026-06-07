@@ -1,111 +1,27 @@
 /* Map */
-.parcel {
-  height: 600px;
-  width: 600px;
-  display: grid;
-  position: relative;
-  grid-column: 1;
-}
-
-tbody {
-  height: 600px;
-  width: 600px;
-  gap: 0;
-}
-
-tr {
-  height: 40px;
-  width: 600px;
-  display: flex;
-}
-
-.tile {
-  background-repeat: no-repeat;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  background-image: url('/Terrain.png');
-  background-size: 120px 160px;
-  position: relative;
-}
-
-.terrain {
-  background-repeat: no-repeat;
-  width: 40px;
-  height: 40px;
-}
-
-.void {
-  background-position: 40px 0;
-}
-
-.grass {
-  background-position: 0 0;
-}
-
-.sand {
-  background-position: -40px 0;
-}
-
-.snow {
-  background-position: -80px 0;
-}
-
-.tree {
-  background-position: 0 -40px;
-}
-
-.palm {
-  background-position: -40px -40px;
-}
-
-.evergreen {
-  background-position: -80px -40px;
-}
-
-.boulder {
-  background-position: 0 -80px;
-}
-
-.sandstone {
-  background-position: -40px -80px;
-}
-
-.packed-ice {
-  background-position: -80px -80px;
-}
-
-.flowers {
-  background-position: 0 -120px;
-}
-
-.seashells {
-  background-position: -40px -120px;
-}
-
-.ice {
-  background-position: -80px -120px;
-}
-
-.water {
-  background-image: url('/Water.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.selected {
-  width: 38px;
-  height: 38px;
-  border: 1px solid red;
-}
-
-.hovered {
-  width: 38px;
-  height: 38px;
-  border: 1px solid #6fd42f;
-}
 
 .Pause {
-  padding: 35%;
+  padding: 236px;
+}
+
+.background {
+  /* Filler background */
+  background-image: url("/womp_Womp.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.Map {
+  border-spacing: 0;
+  padding: 20px
+}
+
+.Map-Row {
+  height: 40px;
+}
+
+.Map-Tile {
+  width: 38px;
+  padding: 0;
+  border: 1px solid lime
 }

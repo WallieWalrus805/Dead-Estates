@@ -36,7 +36,7 @@ export function Landing() {
     return (
         <>
             {showWelcome &&
-                <video id="Scene_I" ref={videoRef} autoPlay playsInline>
+                <video id="Scene_I" ref={videoRef} playsInline>
                     <source src={launch} type="video/mp4" />
                 </video>
             }
@@ -52,7 +52,7 @@ export function Landing() {
                             {view == 1 ?
                                 <Login /> : <CreateUser />
                             }
-                            <button className="Back" onClick={() => setView(0)}>Back</button>
+                            <button className="back-button" onClick={() => setView(0)}>Back</button>
                         </>
                     }
                 </div>
